@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>index - { SQRH }</title>
+  <title>rails开发手记 - { SQRH }</title>
   <meta name="author" content="SQRH">
 
   
-  <meta name="description" content="Index Apr 16th, 2013 This Page is under construction currently. Please check my blog. Apr 16th, 2013 Comments Please enable JavaScript to view the &hellip;">
+  <meta name="description" content="如何安装多个版本的ruby&amp;rails？ 使用rvm(Ruby Version Manager)，需要注意的是，最好把不同版本的rails安装在不同的ruby下，否则很有可能在反复的版本切换与gem install之后出现怎么调也调不好的错误。rvm设置默认的ruby版本的命令是rvm &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.sqrh.net">
+  <link rel="canonical" href="http://www.sqrh.net/blog/2011/07/22/rails-notes">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="{ SQRH }" type="application/atom+xml">
@@ -77,34 +77,15 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Index</h1>
-    <p class="meta">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-16T20:42:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time></p>
-  </header>
-  
-  This Page is under construction currently.
-
-Please check <a href="/blog/">my blog</a>.
-
-  
-    <footer>
+    
+      <h1 class="entry-title">Rails开发手记</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
@@ -116,26 +97,69 @@ Please check <a href="/blog/">my blog</a>.
   
 
 
-<time datetime="2013-04-16T20:42:00+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
+<time datetime="2011-07-22T00:00:00+08:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><ol>
+<li>如何安装多个版本的ruby&amp;rails？<br /> 使用rvm(Ruby Version Manager)，需要注意的是，最好把不同版本的rails安装在不同的ruby下，否则很有可能在反复的版本切换与gem install之后出现怎么调也调不好的错误。rvm设置默认的ruby版本的命令是rvm 1.x.x &#8211;default</li>
+<li>使用git clone，发现无论时seed还是rails console调用model如User时报错无法进行？<br /> 使用cancan进行权限管理时，数据库一定要先配置好role表，否则会发现只要与之相关的model都无法使用且报错根本无法理解。</li>
+<li>使用PaperClip进行图片管理，不知名错误？<br /> 请先检查是否安装了ImageMagick。</li>
+<li>使用PaperClip，上传后没有反应？<br /> 注意是否在form_for处加了:html =&gt; { :multipart =&gt; true}</li>
+<li>bundle install sqlite3后，仍然报错sqlite3_native LoadError？<br /> 可能是没有编译安装，切换到sqlite3的gem处，make，install一下试试。</li>
+<li>我要移植安装gems的机器上没有网络怎么办？<br /> 可以使用bundle package将gems与项目捆绑打包，之后到目标机器上使用bundle install &#8211;local</li>
+</ol>
+<p>再说说使用rails的感受吧，rails发展的时间比django要长，各种插件与应用都相当丰富与成熟了，而且各种用法灵活多变，可定制性很强大，也确实可以被认为是当前最agile的架构。然而它的灵活性确实是有严重代价的，第一是上手难度相对要大，几个人一起学还不错；第二是错误百出，有些错误几乎没法解决；第三是最重要也最伤人的，由于它版本更新太快，各种插件跟进的速度又不一，版本控制的问题实在是让人伤透了脑筋，即使用了rvm与bundler这等神器，但错误却不会因此而消失，所以rails版本切换一定要慎之又慎。。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
+  
+
+<span class="byline author vcard">Posted by <span class="fn">SQRH</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-22T00:00:00+08:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2011/07/20/eecs-summer-camp-and-freshman/" title="Previous Post: 记信科夏令营与大一生活">&laquo; 记信科夏令营与大一生活</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/08/11/first-trial-ios-core-data/" title="Next Post: 初试iOS Core Data">初试iOS Core Data &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
 
 </div>
 
@@ -190,10 +214,7 @@ Please check <a href="/blog/">my blog</a>.
       var disqus_shortname = 'sqrh';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.sqrh.net/index.html';
-        var disqus_url = 'http://www.sqrh.net/index.html';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
