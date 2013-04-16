@@ -1,0 +1,233 @@
+--- 
+layout: post
+title: "lz78：压缩文件实现源码（c++）"
+tags: 
+- Works
+- algorithm
+- c++
+status: publish
+type: post
+published: true
+meta: {}
+
+---
+<p>一个encoder函数负责压缩，decoder负责解压。</p>
+{% codeblock lang:cpp %}
+#include "rle.h"
+#define NOZIPTOT 10
+//不压缩列表
+const _TCHAR noziplist[NOZIPTOT][5]={L".zip",L".rar",L".jpg",L".rzp",L".pdf",L".chm",L"mp3",L".mp4",L".ppt",L".mov"};
+
+struct SWord
+{
+	char s[WORDLEN+1];
+	short l;
+	bool operator==(SWord &amp; w2)
+	{
+		if (l!=w2.l) return false;
+		for (int i = 0; i &lt; l; i++) if (s[i]!=w2.s[i]) return false;
+		return true;
+	}
+	SWord &amp; operator=(SWord &amp; w)
+	{
+		l = w.l;
+		for (int i = 0; i &lt; l; i++) s[i] = w.s[i];
+		return (*this);
+	}
+	SWord operator+(char &amp; c)
+	{
+		SWord tw = *this;
+		tw.l++;
+		tw.s[tw.l-1] = c;
+		return tw;
+	}
+};
+
+struct SWordCode:public SWord
+{
+	ushort co;
+	SWordCode &amp; operator=(SWord &amp; w)
+	{
+		l = w.l;
+		co = 0;
+		for (int i = 0; i &lt; l; i++) s[i] = w.s[i];
+		return (*this);
+	}
+	SWordCode &amp; operator=(SWordCode &amp; w)
+	{
+		l = w.l;
+		co = w.co;
+		for (int i = 0; i &lt; l; i++) s[i] = w.s[i];
+		return (*this);
+	}
+};
+//字典
+class CDic
+{
+public:
+	SWord d[DICSIZE+1];
+	ushort h[HASHSIZE];
+	int t;
+	CDic()
+	{
+		memset(d,0,sizeof d);
+		memset(h,0,sizeof h);
+		t = 0;
+		SWord tw;
+		for (int i = 0; i &lt; 256; i++){
+			tw.l = 1; tw.s[0] = t;
+			Insert(tw);
+		}
+	}
+	void Refresh()
+	{
+		memset(d,0,sizeof d);
+		memset(h,0,sizeof h);
+		t = 0;
+		SWord tw;
+		for (int i = 0; i &lt; 256; i++){
+			tw.l = 1; tw.s[0] = t;
+			Insert(tw);
+		}
+	}
+
+	int GetHash(SWord &amp; w)
+	{
+		unsigned int hash = 0;
+		int i,th;
+		for (i = 0; i &lt; w.l; i++)
+				if ((i &amp; 1) == 0)
+				{
+					hash ^= ((hash &lt;&lt; 7) ^ w.s[i] ^ (hash &gt;&gt; 3));
+				}   else
+				{
+					hash ^= (~((hash &lt;&lt; 11) ^ w.s[i] ^ (hash &gt;&gt; 5)));
+				}
+		th = ((hash &amp; 0x7FFFFFFF) + HASHSIZE) % HASHSIZE;
+		while (h[th]&amp;&amp;!(w==d[h[th]]))
+		{
+			th++;
+			if (th&gt;=HASHSIZE) th = 0;
+		}
+		return th;
+	}
+	ushort GetCode(SWord &amp; w)
+	{
+		return (h[GetHash(w)]);
+	}
+	void Insert(SWord &amp;w)
+	{
+		t++;
+		d[t] = w;
+		h[GetHash(w)] = t;
+	}
+};
+//检查是否压缩
+bool nozip(_TCHAR* fn)
+{
+	for (int i = 0; i &lt; NOZIPTOT; i++)
+		if (wcsstr(fn,noziplist[i])) return true;
+	return false;
+}
+
+char tc;
+CDic dic;
+//压缩器
+int encoder(fstream &amp; fzip, _TCHAR* fn)
+{
+	int i;
+	time_t now = time(0);
+	wcout&lt;&lt;fn&lt;&lt;L":";
+	fstream fin(fn,ios::in|ios::binary);
+	WIN32_FIND_DATA ffd;
+	FindFirstFile(fn,&amp;ffd);
+	long long fsize = ffd.nFileSizeLow;
+	if (nozip(fn))//不压缩时直接复制
+	{
+		zwrite(fzip,fsize);
+		char c;
+		while (zread(fin,c)) zwrite(fzip,c);
+	}
+	else//否则进行LZ78算法的压缩
+	{
+		zwrite(fzip,fsize);
+		char c;
+		SWordCode w,wc;
+		dic.Refresh();
+		w.l = 0; w.co = 0;
+		while (fsize--)
+		{
+			zread(fin,c);
+			wc = w + c;
+			wc.co = dic.GetCode(wc);
+			if (wc.co&amp;&amp;wc.l&lt;=WORDLEN)
+			{
+				w = wc;
+			}
+			else
+			{
+				zwrite(fzip,w.co);
+				zwrite(fzip,c);
+				if (!wc.co) dic.Insert(wc);
+				if (dic.t==DICSIZE) dic.Refresh();
+				w.l = 1;
+				w.co = (uchar)c+1;
+				w.s[0] = c;
+			}
+		}
+		if (w.l&gt;0) {
+			zwrite(fzip,w.co);
+			zwrite(fzip,c);
+		}
+	}
+	fin.close();
+	wcout&lt;&lt;L"Done in "&lt;&lt;(time(0)-now)&lt;&lt;L" sec(s)."&lt;&lt;endl;
+	return 0;
+}//解压器
+int decoder(fstream &amp; fzip, _TCHAR* fn)
+{
+	int i;
+	long long fsize;
+	time_t now = time(0);
+	wcout&lt;&lt;fn&lt;&lt;L":";
+	fstream fout(fn,ios::out|ios::binary);
+	zread(fzip,fsize);
+	if (nozip(fn))
+	{
+		char c;
+		while (fsize--)
+		{
+			zread(fzip,c);
+			zwrite(fout,c);
+		}
+	}
+	else
+	{
+		char c;
+		ushort co;
+		SWordCode w,wc;
+		dic.Refresh();
+		w.l = 0; w.co = 0;
+		int ct = 0;
+		while (fsize)
+		{
+			zread(fzip,co);
+			zread(fzip,c);
+			if (dic.t==DICSIZE) dic.Refresh();
+			w = dic.d[co];
+			if (w.l)
+			{
+				fsize -= w.l; ct += w.l;
+				for (i = 0; i &lt; w.l; i++)
+					zwrite(fout,w.s[i]);
+				wc = w + c;
+				wc.co = dic.GetCode(wc);
+				if (!wc.co&amp;&amp;wc.l&lt;=WORDLEN+1) dic.Insert(wc);
+			}
+		}
+	}
+	fout.close();
+	wcout&lt;&lt;L"Done in "&lt;&lt;(time(0)-now)&lt;&lt;L" sec(s)."&lt;&lt;endl;
+	return 0;
+}
+{% endcodeblock %}
