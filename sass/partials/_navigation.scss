@@ -1,6 +1,6 @@
 body > nav {
   position: relative;
-  background-color: $nav-bg;
+  //background-color: $nav-bg;
   @include background($nav-bg-front, $nav-bg-back);
   border: {
     top: 1px solid $nav-border-top;
@@ -99,7 +99,7 @@ body > nav {
 }
 .no-placeholder {
   body > nav .search {
-    background: lighten($nav-bg, 15) image-url('search.png') .3em .25em no-repeat;
+    background: lighten($nav-bg, 1) image-url('search.png') .3em .25em no-repeat;
     text-indent: 1.3em;
   }
 }
@@ -113,9 +113,9 @@ body > nav {
   &:after {
     content: "";
     position: absolute; top: -1px; left: 0;
-    background-color: lighten($nav-color, 25);
+    background-color: #3273a6;
   }
-  &:hover:after { background-color: lighten($nav-color, 20); }
+  &:hover:after { background-color: lighten(#3273a6, 20); }
 }
 .maskImage {
   body > nav {

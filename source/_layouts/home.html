@@ -1,0 +1,17 @@
+{% capture root_url %}{{ site.root | strip_slash}}{% endcapture %}
+{% include head.html %}
+<body class="home">
+  <div id="holder">
+    <div id="welcome">
+     
+      <div id="nickname">SQR<span class="hb">(</span><span class="hint">H</span><span class="hb">)</span></div>
+      <div id="why">H<span class="times">X</span>H</div>
+
+    </div>
+  </div>
+  <div id="menu">
+    <a href="{{root_url}}/blog">BLOG</a> <span class="spliter">|</span>
+    <a href="{{root_url}}/showcase">SHOWCASE</a>
+  </div>
+</body>
+</html>

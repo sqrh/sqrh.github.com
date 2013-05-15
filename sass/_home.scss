@@ -1,0 +1,94 @@
+body.home {
+  width: 100%;
+  height: 100%;
+  background: none;
+  div {
+    border-bottom: 0;
+    background: none;
+  }
+  margin: 0 auto;
+}
+#holder{
+  width: 70%;
+  margin: 0 auto;
+  height: 220px;
+}
+$home-title-color: #468;
+#welcome {
+  margin-top: 150px;
+  line-height: 1;
+  text-align: center;
+  color: $home-title-color;
+  text-shadow: 0 2px 2px #123;
+  #why {
+    width: 100%;
+    //float: left;
+    margin-top: 0;
+    height: 0;
+    transform: skew(10deg,0deg) rotate(-180deg);
+    -ms-transform: skew(10deg,0deg) rotate(-180deg); /* IE 9 */
+    -webkit-transform: skew(10deg,0deg) rotate(-180deg); /* Safari and Chrome */
+    opacity: 0;
+    .times {
+      padding-left: 15px;
+      padding-right: 15px;
+      transition: color 0.5s, text-shadow 0.5s;
+      -webkit-transition: color 0.5s, text-shadow 0.5s;
+    }
+    &:hover .times {
+      color: #D28560;
+      text-shadow: 0 2px 2px #EEC;
+    }
+  }
+  #nickname {
+    .hb {
+      display: inline-block;
+      transition: opacity 1s ease-in;
+      -webkit-transition: opacity 1s ease-in;
+      opacity: 0;
+      width: 0px;
+    }
+    .hint {
+      transition: padding-left 1s, color 1s ease-in;
+      -webkit-transition: padding-left 1s, color 1s ease-in;
+      transition-delay: 0.5s;
+      -webkit-transition-delay: 0.5s;
+    }
+    &:hover .hb {
+      opacity: 1;
+      transition-delay: 0;
+      -webkit-transition-delay: 0; /* Safari */
+    }
+    &:hover .hint {
+      color: adjust-color($home-title-color, $lightness: 16, $hue: 10);
+      text-shadow: 0 4px 4px #333;
+      cursor: pointer;
+      padding-left: 0.3em;
+      transition-delay: 0s;
+      -webkit-transition-delay: 0s;
+    }
+  }
+  font-family: $header-title-font-family; 
+  font-size: 8em;
+}
+#menu {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: $sans;
+  a {
+    color: #D28560;
+    text-decoration: none;
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    &:hover {
+      color: #9D725E;
+      text-shadow: 0 1px 1px #EEE;
+    }
+  }
+  .spliter {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: $home-title-color; 
+  }
+  
+}

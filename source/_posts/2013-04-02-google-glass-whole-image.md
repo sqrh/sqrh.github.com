@@ -10,7 +10,7 @@ categories:
 
 之前看到google glass的新闻一直困惑一个问题。我们都知道人眼焦距在5cm左右，正常情况下小于二倍焦距（10cm）位置的东西是看不清楚的。那么我们看google glass的图片：
 
-<img src="http://moeadham.ca/wp-content/uploads/2012/08/google-glass.jpg" border="0" thumbnail="http://moeadham.ca/wp-content/uploads/2012/08/google-glass.jpg" title="photo-media">
+<img src="/images/google-glass.jpg" border="0"  title="photo-media">
 
 显然， 无论眼镜上哪个部分也不可能超过人眼10cm，那么这个眼镜上显示的图像是如何让人看清楚的呢？
 
