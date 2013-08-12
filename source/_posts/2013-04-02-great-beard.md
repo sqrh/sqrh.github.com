@@ -16,29 +16,31 @@ categories:
 
 C应该是迄今为止最成功的语言。六七十年度在贝尔实验室的时候，它就被用于编写UNIX操作系统，而到现今仍然是现代计算的基石之一。30年以来，它仍然维持着世界上最流行的语言的地位。很多人将此归功于Brian Kernighan的《C编程语言》一书，另一些人则归功于C的设计者，Ken Thopmson和Dennis Ritchie的天才。但是他俩除了天才意外，共同的特点是非常壮观的胡子：
 
-<img src="http://fmn.rrimg.com/fmn057/20120622/1905/b_large_5h89_3c1900002f0e1261.jpg" border="0">
-<img src="http://fmn.rrimg.com/fmn061/20120622/1905/b_large_pebo_7aa1000082ac1262.jpg" border="0">
+
+
+<img src="/images/programming-lang-and-beard0.jpg" border="0"  title="photo-media">
+<img src="/images/programming-lang-and-beard1.jpg" border="0"  title="photo-media">
 
 第二流行的语言应该是Java了。在其初次登台15年之后，尽管老是因为与Oracle联系过密而被人说三道四，但它仍然在Android和一些视频云服务上遍地开花。理所应当的，它的创造者James Gosling，也知道如何保养他意义重大的面部毛发。
 
-<img src="http://fmn.rrimg.com/fmn062/20120622/1905/b_large_Zvnq_2b01000078211262.jpg" border="0">
+<img src="/images/programming-lang-and-beard2.jpg" border="0"  title="photo-media">
 
 第三流行？或许是C++吧，一种C的派生语言，也在贝尔实验室中发明。它的开发者是Bjarne Stroustrup，一个曾经有着必要大小胡须的人（下前）。C++没有C那么流行，或许正与Stroustrup决定把胡子给刮了（下后）有关。
 
-<img src="http://fmn.rrimg.com/fmn059/20120622/1905/b_large_ViMT_6a200000461f1263.jpg" border="0">
-<img src="http://fmn.rrimg.com/fmn056/20120622/1905/b_large_9uOC_4bdb00002b821261.jpg" border="0">
+<img src="/images/programming-lang-and-beard3.jpg" border="0"  title="photo-media">
+<img src="/images/programming-lang-and-beard4.jpg" border="0"  title="photo-media">
 
 Lisp是一个第二古董的仍在使用的高级语言，影响着数不清的后继者们。Alan Kay，一个为当代计算做出奠基贡献的研究者曾经将Lisp视为“举世无双的最伟大编程语言。”它的设计者呢？是John McCarthy，一位在人工智能研究史上胡子最大的人。
 
-<img src="http://fmn.rrimg.com/fmn064/20120622/1905/b_large_TJ1k_0c1a00009fa81261.jpg" border="0">
+<img src="/images/programming-lang-and-beard5.jpg" border="0"  title="photo-media">
 
 或许Kay就应该多关心下McCarthy的胡子而不是语言的具体设计。Kay发明了SmallTalk，造成了对后来的面对对象语言的深远影响，但是该语言却从来没有在世界上大流行过。问题似乎出在Kay仅仅留了个小胡子上。
 
-<img src="http://fmn.rrimg.com/fmn065/20120622/1910/b_large_cx69_74ae00002a951263.jpg" border="0">
+<img src="/images/programming-lang-and-beard6.jpg" border="0"  title="photo-media">
 
 你看看，一个小胡子是可能限制语言的发展的。Joe Armstrong，Erlang语言的发明者，是一个小胡子的男人。同样的小胡子男人有Larry Wall，Perl的发明者，以及Thomas Kurtz，BASIC语言的发明者。这些都是有一定影响力的语言，并且现在仍然在某些方面有所运用。但是他们本来可以留个更大的胡子的。
 
-<img src="http://fmn.rrimg.com/fmn065/20120622/1910/b_large_BDrl_6aed000059331263.jpg" border="0">
+<img src="/images/programming-lang-and-beard7.jpg" border="0"  title="photo-media">
 
 话说回来，小胡子总比没胡子强。看看Kristen Nygaard，SIMULA的发明者？一点胡子都没有。Ada的发明者Jean Ichbiah？剃得很干净。Simon Peyton Jones，开发Haskell语言的主要脑力？你自己猜猜看好了。
 
@@ -50,7 +52,8 @@ Lisp是一个第二古董的仍在使用的高级语言，影响着数不清的�
 
 当Kahson的胡子理论于2004年第一次发表时，他显然刺激了Ruby的创造者，Yukihiro “Matz” Matsumoto，一个向来喜欢刮干净胡子的人，作出了改变和回应：
 
-<img src="http://fmn.rrimg.com/fmn064/20120622/1910/b_large_68tK_31b8000038a11263.jpg" border="0">
+<img src="/images/programming-lang-and-beard8.jpg" border="0"  title="photo-media">
+
 
 
 来源：http://www.wired.com/wiredenterprise/2012/06/beard-gallery/

@@ -116,7 +116,7 @@ function addHint() {
           transform: 'skew(0deg) rotate(0deg)',
           opacity: 1,
           "margin-top" : '-0.8em'
-        }, {duration: 1000}).css('height', '1em');
+        }, {duration: 1000}).css('display','block');
       $("#nickname").animate({
           transform: 'skew(-10deg) rotate(180deg)',
           opacity: 0
@@ -131,7 +131,7 @@ function addHint() {
               transform: 'skew(10deg) rotate(-180deg)',
               opacity: 0,
               "margin-top" : 0
-            }, {duration: 1000}).css('height', 0);
+            }, {duration: 1000, complete: function(){$(this).css('display','none');}});
           $("#nickname").animate({
               transform: 'skew(0deg) rotate(0deg)',
               opacity: 1
